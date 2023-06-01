@@ -26,8 +26,11 @@ Route.post('/login', 'LoginController.login')
 
 
 Route.group(() => {
-  Route.get('/', 'HomeController.index').as('root')
+  // Route.get('/', 'HomeController.index').as('root')
+  Route.get('/', 'HookController.index').as('root')
+  Route.get('/hook_edit/:id', 'HookController.edit').as('hook_edit')
+  Route.post('/hook_edit/:id', 'HookController.update').as('hook_update')
+  Route.get('/home', 'HookController.index')
   Route.get('/logout', 'LoginController.logout').as('logout')
-  Route.get('/home', 'HomeController.index')
   Route.get('/try', 'HomeController.try')
 }).middleware('auth')

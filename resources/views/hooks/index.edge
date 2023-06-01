@@ -28,4 +28,26 @@
 
 @section('container')
 
+<table class="table table-striped mt-5">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Endpoint</th>
+      <th scope="col">Response Status</th>
+      <th scope="col">Active</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    @each(hook in hooks)
+      <tr>
+        <th scope="row">{{ hook.id }}</th>
+        <td>{{ hook.endpoint }}</td>
+        <td>{{ hook.response_status }}</td>
+        <td>{{ hook.is_active ? 'Active':'Inactive' }}</td>
+        <td><a class="btn btn-primary" href="/hook_edit/{{hook.id}}" role="button">Edit</a></td>
+      </tr>
+    @end
+  </tbody>
+</table>
 @endsection

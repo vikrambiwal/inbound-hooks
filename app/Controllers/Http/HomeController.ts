@@ -9,5 +9,3 @@ export default class HomeController {
     return ctx.view.render('try')
   }
 }
-
-

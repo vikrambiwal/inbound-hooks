@@ -1,0 +1,54 @@
+@layout('layouts/main')
+
+@section('body')
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Inbound Hooks</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        {{--  <a href="/">Home</a>  --}}
+      </li>
+    </ul>
+    <div class="form-inline my-5 my-lg-0">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="btn btn-primary" href="{{ route('logout') }}" role="button">Log out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+@endsection
+
+@section('container')
+<form action="/hook_edit/{{hook.id}}"  method="post">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Endpoint</label>
+    <input type="text" class="form-control" id="endpoint" value="{{hook.endpoint}}" name="endpoint" aria-describedby="emailHelp" placeholder="Endpoint">
+  </div>
+
+  <div class="form-group">
+    <select class="form-control" name="response_status" aria-label="Default select example">
+      @each(code in [200, 401, 429, 408, 500])
+        @if(code == hook.response_status)
+          <option selected value="{{code}}" >{{code}}</option>
+        @else
+          <option value="{{code}}" >{{code}}</option>
+        @end
+      @end
+    </select>
+  </div>
+
+  <div class="form-check">
+    <input type="checkbox" checked="{{hook.is_active}}" name="is_active" class="form-check-input" id="is_active">
+    <label class="form-check-label" for="is_active">Active</label>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+@endsection
