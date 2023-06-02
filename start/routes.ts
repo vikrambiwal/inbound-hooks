@@ -34,3 +34,6 @@ Route.group(() => {
   Route.get('/logout', 'LoginController.logout').as('logout')
   Route.get('/try', 'HomeController.try')
 }).middleware('auth')
+
+Route.post('/api/webhook/:id', 'webhook/WebhookController.post').as('webhook_post')
+Route.get('/api/webhook/:id', 'webhook/WebhookController.get').as('webhook_get')
