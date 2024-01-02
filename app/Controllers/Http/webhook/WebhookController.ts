@@ -6,7 +6,7 @@ export default class WebhookController {
     try {
       const id = ctx.request.param('id')
       const hook = await Hook.query().where('endpoint', id).first()
-      return ctx.response.status(parseInt(`${hook?.responseStatus || 404}`)).json({ message: "success", ip: ctx.request.ip() })
+      return ctx.response.status(parseInt(`${hook?.responseStatus || 404}`)).json({ message: "success !!", ip: ctx.request.ip() })
     } catch (error) {
       console.log('error:', error);
       return ctx.response.status(404)
@@ -17,7 +17,7 @@ export default class WebhookController {
     try {
       const id = ctx.request.param('id')
       const hook = await Hook.query().where('endpoint', id).first()
-      return ctx.response.status(parseInt(`${hook?.responseStatus || 404}`)).json({ message: "success", ip: ctx.request.ip() })
+      return ctx.response.status(parseInt(`${hook?.responseStatus || 404}`)).json({ message: "success !!", ip: ctx.request.ip() })
     } catch (error) {
       console.log('error:', error);
       return ctx.response.status(404)
